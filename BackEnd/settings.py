@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-sa3km5r#959d=p2@_$(-f62bhp1a_%jblfv3uk#l7!*av!2os8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 WSGI_APPLICATION = 'BackEnd.wsgi.application'
 
@@ -104,8 +104,7 @@ DATABASES = {
         'NAME': 'BMH',  
         'USER':'onlinedata',
         'PASSWORD':'ONLINE@123',
-        'HOST':'127.0.0.1',
-        'PORT':'5432'
+        'HOST':'127.0.0.1'
 
     }
 }
