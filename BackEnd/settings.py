@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-sa3km5r#959d=p2@_$(-f62bhp1a_%jblfv3uk#l7!*av!2os8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
+
+ALLOWED_HOSTS = ['54.168.212.67', 'localhost', 'bhmonline.tech', 'www.bhmonline.tech']
 
 WSGI_APPLICATION = 'BackEnd.wsgi.application'
 
