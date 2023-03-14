@@ -101,9 +101,9 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BMH-2',  
-        'USER':'postgres',
-        'PASSWORD':'jithu@123',
+        'NAME': 'BMH',  
+        'USER':'onlinedata',
+        'PASSWORD':'ONLINE@123',
         'HOST':'127.0.0.1',
         'PORT':'5432'
 
