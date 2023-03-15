@@ -31,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['54.168.212.67', 'localhost', 'bhmonline.tech', 'www.bhmonline.tech']
 
+CSRF_TRUSTED_ORIGINS=['54.168.212.67', 'localhost', 'bhmonline.tech', 'www.bhmonline.tech']
+
 WSGI_APPLICATION = 'BackEnd.wsgi.application'
 
 ASGI_APPLICATION = 'BackEnd.asgi.application'
