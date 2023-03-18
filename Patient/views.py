@@ -109,14 +109,12 @@ class AppointmentListView(APIView):
             dock = d3.first_name
             patient = d1.first_name
             email = d3.email
-            celery_worker.delay(date, dock, patient, email)
+            send_email_celery(date, dock, patient, email)
             return Response (serializer.data, status=status.HTTP_201_CREATED)
         return Response (status = status.HTTP_406_NOT_ACCEPTABLE)
 
 
 def send_email_celery(date, dock, patient, email):
-    print('celery started to work')
-    print('poda patti')
     subject = f"Congratulations {dock}"
     message = 'You have a new appointment request on'  
     email_from = settings.EMAIL_HOST_USER
