@@ -21,9 +21,11 @@ def RoomsData(request):
     if serializer.is_valid():
         try:
             left = Rooms.objects.get(sender = sender, receiver = receiver)
+            print('left')
             room_id = left.id
             return Response(data = room_id)
-        except:
+        except ObjectDoesNotExist:
+            print('reached except')
             serializer.save()
             left = Rooms.objects.get(sender = sender, receiver = receiver)
             room_id = left.id
