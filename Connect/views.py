@@ -19,14 +19,15 @@ def RoomsData(request):
     print(sender, receiver)
     serializer = RoomSerializer(data= request.data)
     if serializer.is_valid():
-        left = Rooms.objects.get(sender = sender, receiver = receiver)
-        if left:
+        try:
+            left = Rooms.objects.get(sender = sender, receiver = receiver)
             room_id = left.id
-            print(room_id)
             return Response(data = room_id)
-        else:
+        except:
             serializer.save()
-            return Response(status= status.HTTP_200_OK)
+            left = Rooms.objects.get(sender = sender, receiver = receiver)
+            room_id = left.id
+            return Response(data = room_id)
 
     
 

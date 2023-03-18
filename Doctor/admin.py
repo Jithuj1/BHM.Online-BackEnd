@@ -3,4 +3,3 @@ from .models import Doctors
 
 # Register your models here.
 
-admin.site.register(Doctors)
