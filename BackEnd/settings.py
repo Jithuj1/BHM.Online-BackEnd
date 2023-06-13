@@ -29,7 +29,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ["*"]
 
-ALLOWED_HOSTS = ['54.168.212.67', 'localhost', 'bhmonline.tech', 'www.bhmonline.tech']
+ALLOWED_HOSTS = ['13.54.134.34', 'localhost', 'bhmonline.tech', 'www.bhmonline.tech']
 
 WSGI_APPLICATION = 'BackEnd.wsgi.application'
 
