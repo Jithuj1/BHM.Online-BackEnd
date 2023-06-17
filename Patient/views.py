@@ -96,10 +96,7 @@ class AppointmentListView(APIView):
         return Response (serializer.data)
 
     def post(self, request, format = None):
-        print(request.data)
         serializer = AppointmentSerializer(data = request.data)
-        print(serializer.is_valid())
-        print(serializer.errors)
         if serializer.is_valid():
             serializer.save()
             date = request.data['date']

@@ -13,7 +13,6 @@ from Patient.models import Appointment
 
 @api_view(['GET', 'POST'])
 def doctor(request):
-    print("data", request.data)
     if request.method == "GET":
         doctors = Doctors.objects.all()
         serializer = DoctorSerializer(doctors, many = True)
@@ -40,10 +39,8 @@ def doctor(request):
 
         if serializer.is_valid():
             serializer.save()
-            print("here2", serializer.data)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         else:
-            print('else')
             return Response({"status":status.HTTP_403_FORBIDDEN})
 
 

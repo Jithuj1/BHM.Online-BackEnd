@@ -19,7 +19,7 @@ def hospital(request):
     elif request.method == "POST":
         print("datas", request.data)
         serializer = HospitalSerializer(data ={'name':request.data['name'], 'phone':request.data['phone'],
-        'email':request.data['email'],'address':request.data['address'],'blood':request.data['blood'],'category':request.data['category'],'image':request.data['image']})
+        'email':request.data['email'],'address':request.data['address'],'blood':request.data['blood'],'category':request.data['category'],'image':request.data['image']}, partial = True)
         name = request.data.get('name')
         print(serializer.is_valid())
         print("jithu", serializer.errors)
@@ -29,6 +29,7 @@ def hospital(request):
         else:
             print("inside")
             if serializer.is_valid():
+                print('here it is')
                 # print(type(request.data['image']))
                 # print("jjjj",serializer['image'])
                 serializer.save()

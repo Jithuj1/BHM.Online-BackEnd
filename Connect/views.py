@@ -16,16 +16,13 @@ from django.core.exceptions import ObjectDoesNotExist
 def RoomsData(request):
     sender = request.data.get('sender')
     receiver = request.data.get('receiver')
-    print(sender, receiver)
     serializer = RoomSerializer(data= request.data)
     if serializer.is_valid():
         try:
             left = Rooms.objects.get(sender = sender, receiver = receiver)
-            print('left')
             room_id = left.id
             return Response(data = room_id)
         except ObjectDoesNotExist:
-            print('reached except')
             serializer.save()
             left = Rooms.objects.get(sender = sender, receiver = receiver)
             room_id = left.id
@@ -35,7 +32,6 @@ def RoomsData(request):
 
 @api_view(['GET'])
 def getRoom(request, patient, doctor):
-    print(patient, doctor, 'idock')
     try:
         room = Rooms.objects.get(sender = patient, receiver = doctor)
         serializer = RoomSerializer(room)
@@ -64,7 +60,6 @@ def singleMessages(request):
     try:
         room = Rooms.objects.get(sender = sender, receiver = receiver)
         # room = Rooms.objects.get(receiver = sender, sender = receiver)
-        print(room)
     except ObjectDoesNotExist:
         return Response(status= status.HTTP_404_NOT_FOUND)
     serializer = MessageSerializer(data = {'room_name' : room.id, 'sender':sender, 'content':content })
@@ -79,12 +74,8 @@ def singleMessages(request):
 @api_view(['POST', 'GET'])
 def Notifications(request):
     if request.method == 'POST':
-        print(request.data)
         uid = request.data['doctor']
-        print(uid, 'doctor')
         serializer = NotificationSerializer(data = request.data, partial = True)
-        print(serializer.is_valid())
-        print(serializer.errors)
         if serializer.is_valid():
             serializer.save()
             return Response(status= status.HTTP_202_ACCEPTED)
